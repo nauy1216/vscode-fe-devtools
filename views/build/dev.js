@@ -1,8 +1,7 @@
 /* eslint-disable */
 const path = require("path");
 const fs = require("fs");
-var bodyParser = require("body-parser");
-var html2canvas = require("html2canvas");
+const NodeOutputFileSystem = require('webpack/lib/node/NodeOutputFileSystem')
 
 function addStyleResource(rule) {
     rule
@@ -14,7 +13,10 @@ function addStyleResource(rule) {
 }
 
 module.exports = {
+    publicPath: './',
+    outputDir: path.resolve(process.cwd(), '../src/page'),
     devServer: {
+        fs: new NodeOutputFileSystem(),
         port: 9527,
         proxy: {
             // 数据包
@@ -82,6 +84,7 @@ module.exports = {
         });
         config.resolve.alias["editor"] = path.resolve(process.cwd(), `src/page-admin/views/editor`);
         config.resolve.alias["swiper$"] = "swiper/swiper-bundle.min.js";
+        // config.output.publicPath = './'
     },
     pages: {
         "page-web": {

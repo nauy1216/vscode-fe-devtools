@@ -29,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		);
 		panel.title = 'title';
-		panel.webview.html= getWebViewContent(context, 'src/page/index.html');
+		panel.webview.html= getWebViewContent(context, 'src/page/web.html');
 	});
 
 	context.subscriptions.push(disposable);
