@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "types": ["webpack-env", "jest"],
+    "paths": {
+      "page-admin/*": ["src/page-admin/*"],
+      "page-web/*": ["src/page-web/*"],
+      "components/*": ["src/components/*"],
+      "types/*": ["src/types/*"],
+      "shared/*": ["src/shared/*"],
+      "editor/*": ["src/page-admin/views/editor/*"],
+      "api/*": ["src/api/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx", "script/**/*.ts", "api/*.ts","api/**/*.ts", "script/build-file.js"],
+  "exclude": ["node_modules"]
+}
