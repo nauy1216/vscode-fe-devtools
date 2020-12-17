@@ -3,6 +3,15 @@ const path = require("path");
 const fs = require("fs");
 const NodeOutputFileSystem = require('webpack/lib/node/NodeOutputFileSystem')
 
+
+// 在这里要实现memory-fs的所有方法， 否则将不能在浏览直接访问到
+// 因为在访问时浏览器报了一个错误
+class MyOutputFileSystem extends NodeOutputFileSystem {
+    constructor() {
+        super()
+    }
+}
+
 function addStyleResource(rule) {
     rule
         .use("style-resource")
@@ -14,9 +23,9 @@ function addStyleResource(rule) {
 
 module.exports = {
     publicPath: './',
-    outputDir: path.resolve(process.cwd(), '../src/page'),
+    // outputDir: path.resolve(process.cwd(), '../src/page'),
     devServer: {
-        fs: new NodeOutputFileSystem(),
+        fs: new MyOutputFileSystem(),
         port: 9527,
         proxy: {
             // 数据包
