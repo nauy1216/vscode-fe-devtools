@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { getWebViewContent } from "./util";
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -18,9 +19,21 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Display a message box to the user
 		vscode.window.showInformationMessage('刘承源，你好!');
+		const panel = vscode.window.createWebviewPanel(
+			"liuchengyuan", 
+			'刘承源，你好!', 
+			vscode.ViewColumn.Active, 
+			{
+				enableScripts: true, // 启用JS，默认禁用
+				retainContextWhenHidden: true, // webview被隐藏时保持状态，避免被重置
+			}
+		);
+		panel.title = 'title';
+		panel.webview.html= getWebViewContent(context, 'src/page/index.html');
 	});
 
 	context.subscriptions.push(disposable);
+
 }
 
 // this method is called when your extension is deactivated
